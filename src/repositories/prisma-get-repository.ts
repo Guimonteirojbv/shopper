@@ -1,6 +1,8 @@
 import { Measure } from "@prisma/client";
-import { GetRepository } from "./get-repository";
+
 import { prisma } from "@/lib/prisma";
+
+import { GetRepository } from "./get-repository";
 
 
 export class PrismaGetRepository implements GetRepository {

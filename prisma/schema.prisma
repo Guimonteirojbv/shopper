@@ -20,4 +20,5 @@ model Measure {
   measure_type     String
   measure_value    Int?
   image_url        String?
+  is_confirmed     Boolean?
 }
