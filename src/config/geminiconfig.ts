@@ -1,4 +1,4 @@
-import { env } from '@/env';
+import { env } from '../env/index.js';
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import { GoogleAIFileManager } from "@google/generative-ai/server";
 

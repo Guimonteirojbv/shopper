@@ -1,6 +1,6 @@
 import { Prisma, Measure } from "@prisma/client";
-import { UploadRepository } from "./upload-repository";
-import { prisma } from "@/lib/prisma";
+import { UploadRepository } from "./upload-repository.js";
+import { prisma } from "../lib/prisma.js";
 
 
 export class PrismaUploadRepository implements UploadRepository {

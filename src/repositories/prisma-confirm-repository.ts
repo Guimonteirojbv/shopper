@@ -1,6 +1,6 @@
 import { Measure } from "@prisma/client";
-import { ConfirmRepository } from "./confirm-repository";
-import { prisma } from "@/lib/prisma";
+import { ConfirmRepository } from "./confirm-repository.js";
+import { prisma } from "../lib/prisma.js";
 
 
 export class PrismaConfirmRepository implements ConfirmRepository{

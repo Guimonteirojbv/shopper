@@ -1,8 +1,8 @@
-import { PrismaConfirmRepository } from "@/repositories/prisma-confirm-repository";
-import { ConfirmImageUseCase } from "@/use-cases/confirm-image-use-case";
-import { MeasureAlreadyConfirmed } from "@/use-cases/errors/measure-already-confirmed";
+import { PrismaConfirmRepository } from "../../repositories/prisma-confirm-repository.js";
+import { ConfirmImageUseCase } from "../../use-cases/confirm-image-use-case.js";
+import { MeasureAlreadyConfirmed } from "../../use-cases/errors/measure-already-confirmed.js";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { title } from "process";
+
 import z, { ZodError } from 'zod'
 
 export async function ConfirmMeasureController(request: FastifyRequest, reply: FastifyReply) {

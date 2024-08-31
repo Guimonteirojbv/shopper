@@ -1,6 +1,6 @@
 import { Measure } from "@prisma/client";
-import { GetByCodeRepository } from "./get-by-code-repository";
-import { prisma } from "@/lib/prisma";
+import { GetByCodeRepository } from "./get-by-code-repository.js";
+import { prisma } from "../lib/prisma.js";
 
 
 export class GetByIdRepository implements GetByCodeRepository {

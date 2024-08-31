@@ -1,6 +1,6 @@
-import { ConfirmRepository } from "@/repositories/confirm-repository";
-import { DoesNotExistMeasure } from "./errors/does-not-exists-measure";
-import { MeasureAlreadyConfirmed } from "./errors/measure-already-confirmed";
+import { ConfirmRepository } from "../repositories/confirm-repository.js";
+import { DoesNotExistMeasure } from "./errors/does-not-exists-measure.js";
+import { MeasureAlreadyConfirmed } from "./errors/measure-already-confirmed.js";
 
 
 interface ConfirmImageRequest {

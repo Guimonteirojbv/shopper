@@ -1,8 +1,8 @@
 import { Measure } from "@prisma/client";
 
-import { prisma } from "@/lib/prisma";
+import { prisma } from "../lib/prisma.js";
 
-import { GetRepository } from "./get-repository";
+import { GetRepository } from "./get-repository.js";
 
 
 export class PrismaGetRepository implements GetRepository {

@@ -1,15 +1,15 @@
-import { PrismaUploadRepository } from "@/repositories/prisma-uploads-repository";
-import { UploadUseCase } from "@/use-cases/upload-image-use-case";
+import { PrismaUploadRepository } from "../../repositories/prisma-uploads-repository.js";
+import { UploadUseCase } from "../../use-cases/upload-image-use-case.js";
 import  { FastifyReply, FastifyRequest } from "fastify";
 
 import z, { ZodError } from 'zod'
-import {Base64} from 'js-base64'
-import { AlreadyExistsMeasure } from "@/use-cases/errors/already-exists-measure";
+import { isValid }  from 'js-base64'
+import { AlreadyExistsMeasure } from "../../use-cases/errors/already-exists-measure.js";
 
 export async function UploadMeasureController(request: FastifyRequest, reply: FastifyReply) {
 
     const data = z.object({
-        image: z.string(),
+        image: z.string().refine(isValid, { message: 'invalid base64'}),
         customer_code: z.string({message: "customer_code must be a string but received other type"}),
         measure_datetime: z.string({message: "date must be a string of Date but received other type"}).transform((dateString) => {
             const date = new Date(dateString)
@@ -41,7 +41,7 @@ export async function UploadMeasureController(request: FastifyRequest, reply: Fa
         )
 
         const partialResponse = {
-            image_url: response?.image_url,
+            image_url: `http://localhost:3000/${response?.image_url}`,
             measure_value: response?.measure_value,
             measure_uuid: response?.measure_uuid
         }

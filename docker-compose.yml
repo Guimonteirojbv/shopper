@@ -1,6 +1,22 @@
-version: "3"
+version: "3.9"
 
 services:
+  app:
+    build: .
+    container_name: app_measure
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://docker:docker@api-measure-pg:5432/api-measure-pg?schema=public
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    volumes:
+      - .:/app
+    depends_on:
+      api-measure-pg:
+        condition: service_healthy
+    command: >
+      sh -c "npx prisma migrate dev --name init && npm start"
+
   api-measure-pg:
     image: bitnami/postgresql
     ports:
@@ -9,3 +25,8 @@ services:
       - POSTGRESQL_USERNAME=docker
       - POSTGRESQL_PASSWORD=docker
       - POSTGRESQL_DATABASE=api-measure-pg
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "docker"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

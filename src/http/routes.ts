@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify'
-import { UploadMeasureController } from './controller/UploadMeasureController'
-import { ConfirmMeasureController } from './controller/ConfirmMeasureController'
-import { GetMeasureController } from './controller/GetMeasureController'
+import { UploadMeasureController } from './controller/UploadMeasureController.js'
+import { ConfirmMeasureController } from './controller/ConfirmMeasureController.js'
+import { GetMeasureController } from './controller/GetMeasureController.js'
 
 
 export async function Routes(app: FastifyInstance) {

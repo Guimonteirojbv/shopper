@@ -1,9 +1,10 @@
-import { FileManager, GenAI } from "@/config/geminiconfig";
-import { CreateImageFromBase64 } from "@/helpers/create-image-from-base64";
-import { GetByIdRepository } from "@/repositories/prisma-get-by-code-repository";
-import { UploadRepository } from "@/repositories/upload-repository";
+import { FileManager, GenAI } from "../config/geminiconfig.js";
+import { CreateImageFromBase64 } from "../helpers/create-image-from-base64.js";
+import { GetByIdRepository } from "../repositories/prisma-get-by-code-repository.js";
+import { UploadRepository } from "../repositories/upload-repository.js";
 import { UploadFileResponse } from "@google/generative-ai/dist/server/server";
-import { AlreadyExistsMeasure } from "./errors/already-exists-measure";
+import { AlreadyExistsMeasure } from "./errors/already-exists-measure.js";
+import { IsNotValidImage } from "./errors/is-not-valid-image.js";
 
 
 interface UploadImageRequest {
@@ -44,6 +45,7 @@ export class UploadUseCase {
 
     if(isNaN(transformContentInNumber)) throw new Error("Resultado inesperado, tente novamente ou tente enviar uma imagem mais nítida")
 
+    if(transformContentInNumber === 400) throw new IsNotValidImage()
     
     
     const createMeasure = this.UploadRepository.create(
@@ -86,7 +88,7 @@ export class UploadUseCase {
             },
             {
                 text: `
-                        Just give me the value of the ${type} measurement, just the value.
+                    Verifique se a imagem é um hidrômetro ou um gasômetro, se sim me retorne apenas o valor da leitura. Se não me retorne o número 400
                     `
             }
         ])

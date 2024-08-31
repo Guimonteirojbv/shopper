@@ -1,5 +1,5 @@
-import { GetRepository } from "@/repositories/get-repository";
-import { DoesNotExistMeasure } from "./errors/does-not-exists-measure";
+import { GetRepository } from "../repositories/get-repository.js";
+import { DoesNotExistMeasure } from "./errors/does-not-exists-measure.js";
 
 interface GetMeasureRequest {
     customer_code: string;

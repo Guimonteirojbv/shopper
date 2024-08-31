@@ -1,6 +1,6 @@
-import { PrismaGetRepository } from "@/repositories/prisma-get-repository";
-import { DoesNotExistMeasure } from "@/use-cases/errors/does-not-exists-measure";
-import { GetMeasureUseCase } from "@/use-cases/get-measure-use-case";
+import { PrismaGetRepository } from "../../repositories/prisma-get-repository.js";
+import { DoesNotExistMeasure } from "../../use-cases/errors/does-not-exists-measure.js";
+import { GetMeasureUseCase } from "../../use-cases/get-measure-use-case.js";
 import { FastifyReply, FastifyRequest } from "fastify";
 
 import z, { ZodError } from 'zod'
